@@ -18,4 +18,5 @@ for sor in raktarfajl:
     bemenet = sor.strip().split(";")
     raktar.append(bemenet)
 
-
+with open("recept.csv", "w", encoding="utf-8") as blahafajl:
+    blahafajl.write(input("recept: "))
