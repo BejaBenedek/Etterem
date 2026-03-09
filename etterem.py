@@ -18,10 +18,10 @@ for sor in raktarfajl:
     bemenet = sor.strip().split(";")
     raktar.append(bemenet)
 
-vasarlofajl = open("raktar.csv","r",encoding="utf-8")
-for sor in vasarlofajl:
+epstienfajl = open("raktar.csv","r",encoding="utf-8")
+for sor in epstienfajl:
     bemenet = sor.strip().split(";")
     raktar.append(bemenet)
     
-with open("recept.csv", "w", encoding="utf-8") as blahafajl:
+with open("recept.csv", "w", encoding="utf-8") as blahafajl:                                                                                                                                                    #niga
     blahafajl.write(input("recept: "))
