@@ -22,3 +22,6 @@ vasarlofajl = open("raktar.csv","r",encoding="utf-8")
 for sor in vasarlofajl:
     bemenet = sor.strip().split(";")
     raktar.append(bemenet)
+    
+with open("recept.csv", "w", encoding="utf-8") as blahafajl:
+    blahafajl.write(input("recept: "))
