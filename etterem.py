@@ -18,8 +18,8 @@ for sor in raktarfajl:
     bemenet = sor.strip().split(";")
     raktar.append(bemenet)
 
-epstienfajl = open("raktar.csv","r",encoding="utf-8")
-for sor in epstienfajl:
+vasarlofajl = open("raktar.csv","r",encoding="utf-8")
+for sor in vasarlofajl:
     bemenet = sor.strip().split(";")
     raktar.append(bemenet)
     
