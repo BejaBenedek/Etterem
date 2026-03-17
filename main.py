@@ -6,8 +6,12 @@ import lezart_rendeles
 import os
 
 class asztal:
-    def __init__(self, ):
-        
+    def __init__(self, rendelesek_szama, teljes_osszeg):
+        self.rendelesek_szama = rendelesek_szama
+        self.teljes_osszeg = teljes_osszeg
+    
+    def __str__(self):
+        return f"{self.rendelesek_szama}, {self.teljes_osszeg}"
 
 osszesasztal = []
 
@@ -23,6 +27,6 @@ else:
 print(asztalok_szama, "asztal van")
 
 
-while len(osszesasztal) < asztalok_szama:
-    osszesasztal.append()
+#while len(osszesasztal) < asztalok_szama:
+#    osszesasztal.append(asztal)
 
