@@ -5,6 +5,10 @@ import vasarlok
 import lezart_rendeles
 import os
 
+class asztal:
+    def __init__(self, ):
+        
+
 osszesasztal = []
 
 asztalok_szama = 12
@@ -21,3 +25,4 @@ print(asztalok_szama, "asztal van")
 
 while len(osszesasztal) < asztalok_szama:
     osszesasztal.append()
+
