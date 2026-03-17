@@ -27,6 +27,6 @@ else:
 print(asztalok_szama, "asztal van")
 
 
-#while len(osszesasztal) < asztalok_szama:
-#    osszesasztal.append(asztal)
+while len(osszesasztal) < asztalok_szama:
+   osszesasztal.append(asztal)
 
