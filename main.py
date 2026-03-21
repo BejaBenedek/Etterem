@@ -4,6 +4,7 @@ import raktar
 import vasarlok
 import lezart_rendeles
 import os
+import msvcrt
 
 class asztal:
     def __init__(self, neve):
@@ -32,4 +33,23 @@ while i < asztalok_szama:
     osszesasztal.append(asztal(nev))
     i += 1
 
-os.system("cls")
+i = 0
+a = 0
+megy = True
+while megy:
+    os.system("cls")
+    print("================")
+    print("válassz asztalt")
+    print("================")
+    while i < len(osszesasztal):
+        if i != a:
+            print(f"   {osszesasztal[i].neve}")
+        else:
+            print(f"\033[92m\033[1m > {osszesasztal[i].neve} < \033[0m")
+        i += 1
+    i = 0
+    
+    gomb = msvcrt.getch()
+    if gomb in (b'w', b'W'):
+        a += 1
+        
