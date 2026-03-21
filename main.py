@@ -6,13 +6,14 @@ import lezart_rendeles
 import os
 
 class asztal:
-    def __init__(self,neve, rendelesek_szama, teljes_osszeg):
+    def __init__(self, neve):
         self.neve = neve
-        self.rendelesek_szama = rendelesek_szama
-        self.teljes_osszeg = teljes_osszeg
-    
+        self.rendelesek_szama = 0
+        self.teljes_osszeg = 0
+
     def __str__(self):
-        return f"{self.neve}, {self.rendelesek_szama}, {self.teljes_osszeg}"
+        return f"{self.neve} | {self.rendelesek_szama} db | {self.teljes_osszeg} Ft"
+
 
 osszesasztal = []
 
@@ -28,8 +29,7 @@ print(asztalok_szama, "asztal van")
 i = 0
 while i < asztalok_szama:
     nev = "asztal " + str(i+1)
-    osszesasztal.append(asztal(nev, 0, 0))
+    osszesasztal.append(asztal(nev))
     i += 1
 
 os.system("cls")
-
