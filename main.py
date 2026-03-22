@@ -41,15 +41,24 @@ while megy:
     print("================")
     print("válassz asztalt")
     print("================")
+    i = 0
     while i < len(osszesasztal):
         if i != a:
             print(f"   {osszesasztal[i].neve}")
         else:
             print(f"\033[92m\033[1m > {osszesasztal[i].neve} < \033[0m")
         i += 1
-    i = 0
-    
     gomb = msvcrt.getch()
-    if gomb in (b'w', b'W'):
+    if gomb == b'w':
+        a -= 1
+        os.system("cls")
+    elif gomb == b's':
         a += 1
-        
+        os.system("cls")
+    if a < 0:
+        a = len(osszesasztal) - 1
+        os.system("cls")
+    elif a >= len(osszesasztal):
+        a = 0
+        os.system("cls")
+    
