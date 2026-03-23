@@ -102,7 +102,6 @@ while kileptele == False:
                 if isinstance(asztal_obj, asztal) and asztal_obj.vasarlo_neve == "":
                     asztal_obj.vasarlo_neve = uj_vasarlo
                     break
-                
                 megy = True
             else:
                 print("sajnos megtelt az étterem")
