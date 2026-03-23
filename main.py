@@ -35,6 +35,7 @@ while i < asztalok_szama:
 
 i = 0
 a = 0
+asztalnal = False
 megy = True
 while megy:
     os.system("cls")
@@ -57,7 +58,34 @@ while megy:
         a = len(osszesasztal) - 1
     elif a >= len(osszesasztal):
         a = 0
-    if gomb == '\r':
-        os.system
+    if gomb == b'd':
+        os.system("cls")
         megy = False
-        print(osszesasztal[a].neve)
+        mostani_asztalindex = a
+        asztalnal = True
+
+
+a = 0
+lehetosegek = ["rendelni", "fizetni", "megtudni a felszolgálómat"]
+while asztalnal == True:
+    os.system("cls")
+    i = 0
+    print("======================")
+    print("mit szeretnél csinálni")
+    print("======================")
+    while i < len(lehetosegek):
+        if i != a:
+            print(f"   {lehetosegek[i]}")
+        else:
+            print(f"\033[92m\033[1m > {lehetosegek[i]} < \033[0m")
+        i += 1
+    gomb = msvcrt.getch()
+    if gomb == b'w':
+        a -= 1
+    elif gomb == b's':
+        a += 1
+    if a < 0:
+        a = len(lehetosegek) - 1
+    elif a >= len(lehetosegek):
+        a = 0
+    
