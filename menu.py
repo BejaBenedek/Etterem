@@ -40,3 +40,17 @@ def menutorles(nev):
     while i < len(ujmenu):
         kiiras.write(f"{ujmenu[i][0]};{ujmenu[i][1]}\n")
         i += 1
+
+def menukiiras():
+    menu = []
+
+    menufajl = open("menu.csv","r",encoding="utf-8")
+    for sor in menufajl:
+        bemenet = sor.strip().split(";")
+        menu.append(bemenet)
+    menufajl.close()
+
+    i = 0
+    while i < len(menu):
+        print(f"{menu[i][0]} | {menu[i][1]} FT")
+        i += 1

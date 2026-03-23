@@ -11,9 +11,10 @@ class asztal:
         self.neve = neve
         self.rendelesek_szama = 0
         self.teljes_osszeg = 0
+        self.vasarlo_neve = ""
 
     def __str__(self):
-        return f"{self.neve} | {self.rendelesek_szama} db | {self.teljes_osszeg} Ft"
+        return f"{self.neve} | {self.rendelesek_szama} db | {self.teljes_osszeg} Ft | vásárló: {self.vasarlo_neve}"
 
 
 osszesasztal = []
@@ -89,6 +90,7 @@ while kileptele == False:
         print("=================================")
         print(f"mit szeretnél csinálni({osszesasztal[mostani_asztalindex].neve})")
         print("=================================")
+        print(f"vásárló neve: {osszesasztal[i].vasarlo_neve}")
         while i < len(lehetosegek):
             if i != a:
                 print(f"   {lehetosegek[i]}")
@@ -107,6 +109,18 @@ while kileptele == False:
         if gomb == b'd':
             asztalnal = False
             megy = True
+
+        menutnez = False
+        if gomb == b'\r' and lehetosegek[a] == "menüt kérek":
+            asztalnal = False
+            menutnez = True
+            os.system("cls")
+            menu.menukiiras()
+            gomb = msvcrt.getch()
+            if gomb == b'd':
+                os.system("cls")
+                asztalnal = True
+                
 
     a = 0
     lehetosegek = ["recept hozzáadása", "recept törlése", "raktár",]
