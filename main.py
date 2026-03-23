@@ -93,10 +93,17 @@ while kileptele == False:
         if gomb == b'\r' and osszesasztal[a].neve == "új vásárló fogadása":
             os.system("cls")
             megy = False
-            vasarlok.ujvasarlo()
-            vasarlok_lista = vasarlok.osszes_vasarlo()
-            osszesasztal[len(vasarlok_lista)-1].vasarlo_neve = vasarlok_lista[-1]
-            megy = True
+            if len(vasarlok_lista) < asztalok_szama:
+                vasarlok.ujvasarlo()
+                vasarlok_lista = vasarlok.osszes_vasarlo()
+                osszesasztal[len(vasarlok_lista)-1].vasarlo_neve = vasarlok_lista[-1]
+                megy = True
+            else:
+                print("sajnos megtelt az étterem")
+                gomb = msvcrt.getch()
+                if gomb == b'd':
+                    megy = True
+            
 
     a = 0
     lehetosegek = ["rendelni", "fizetni", "megtudni a felszolgálómat", "menüt kérek"]
