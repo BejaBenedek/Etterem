@@ -1,4 +1,6 @@
 import os
+import menu
+
 def torles():
     ujreceptek = []
     
@@ -10,6 +12,7 @@ def torles():
         recepteklista.append(bemenet)
     receptfajl.close()
     ker = str(input("melyik receptet szeretnéd törölni? "))
+    menu.menutorles(ker)
     i = 0
 
     while i < len(recepteklista):
@@ -35,6 +38,7 @@ def hozzaadas():
     hozzavalo = []
     os.system("cls")
     nev = str(input("mi a recept neve? "))
+    menu.arazas(nev)
     os.system("cls")
     hozzavalok = int(input("hány hozzávaló kell a recepthez? "))
     i = 0
