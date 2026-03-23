@@ -94,6 +94,8 @@ while kileptele == False:
             os.system("cls")
             megy = False
             vasarlok.ujvasarlo()
+            vasarlok_lista = vasarlok.osszes_vasarlo()
+            osszesasztal[len(vasarlok_lista)-1].vasarlo_neve = vasarlok_lista[-1]
             megy = True
 
     a = 0

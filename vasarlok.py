@@ -33,8 +33,8 @@ def ujvasarlo():
 
 def osszes_vasarlo():
     lista = []
-    with open("vasarlok.csv", "r", encoding="utf-8") as f:
-        for sor in f:
-            lista.append(sor.strip().split(";")[0])
+    fajl = open("vasarlok.csv", "r", encoding="utf-8")
+    for sor in fajl:
+        lista.append(sor.strip().split(";")[0])
+    fajl.close()
     return lista
-
