@@ -33,13 +33,20 @@ if tobbasztal == "igen":
 
 print(asztalok_szama, "asztal van")
 
+vasarlok_lista = vasarlok.osszes_vasarlo()
+
 i = 0
 while i < asztalok_szama:
     nev = "asztal " + str(i+1)
-    osszesasztal.append(asztal(nev))
+    uj_asztal = asztal(nev)
+    if i < len(vasarlok_lista):
+        uj_asztal.vasarlo_neve = vasarlok_lista[i]
+    osszesasztal.append(uj_asztal)
     i += 1
+
 osszesasztal.append(menupont("admin"))
 osszesasztal.append(menupont("új vásárló fogadása"))
+
 i = 0
 a = 0
 asztalnal = False
@@ -88,7 +95,7 @@ while kileptele == False:
             megy = False
             vasarlok.ujvasarlo()
             megy = True
-            
+
     a = 0
     lehetosegek = ["rendelni", "fizetni", "megtudni a felszolgálómat", "menüt kérek"]
     while asztalnal == True:

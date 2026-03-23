@@ -30,3 +30,11 @@ def ujvasarlo():
     while i < len(vasarlok):
         kiiras.write(f"{vasarlok[i][0]};{vasarlok[i][1]}\n")
         i += 1
+
+def osszes_vasarlo():
+    lista = []
+    with open("vasarlok.csv", "r", encoding="utf-8") as f:
+        for sor in f:
+            lista.append(sor.strip().split(";")[0])
+    return lista
+
