@@ -57,4 +57,7 @@ while megy:
         a = len(osszesasztal) - 1
     elif a >= len(osszesasztal):
         a = 0
-    
+    if gomb == '\r':
+        os.system
+        megy = False
+        print(osszesasztal[a].neve)
