@@ -54,3 +54,22 @@ def menukiiras():
     while i < len(menu):
         print(f"{menu[i][0]} | {menu[i][1]} FT")
         i += 1
+
+def rajtavane(rendeles):
+    menu = []
+
+    menufajl = open("menu.csv","r",encoding="utf-8")
+    for sor in menufajl:
+        bemenet = sor.strip().split(";")
+        menu.append(bemenet)
+    menufajl.close()
+
+    i = 0
+    igen = False
+
+    while i < len(menu):
+        if menu[i] == rendeles:
+            igen = True
+        i += 1
+    
+    return igen

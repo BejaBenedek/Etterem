@@ -115,39 +115,49 @@ while kileptele == False:
     while asztalnal == True:
         os.system("cls")
         i = 0
-        print("=================================")
-        print(f"mit szeretnél csinálni({osszesasztal[mostani_asztalindex].neve})")
-        print("=================================")
-        print(f"vásárló neve: {osszesasztal[mostani_asztalindex].vasarlo_neve}")
-        while i < len(lehetosegek):
-            if i != a:
-                print(f"   {lehetosegek[i]}")
-            else:
-                print(f"\033[92m\033[1m > {lehetosegek[i]} < \033[0m")
-            i += 1
-        gomb = msvcrt.getch()
-        if gomb == b'w':
-            a -= 1
-        elif gomb == b's':
-            a += 1
-        if a < 0:
-            a = len(lehetosegek) - 1
-        elif a >= len(lehetosegek):
-            a = 0
-        if gomb == b'd':
-            asztalnal = False
-            megy = True
+        if osszesasztal[mostani_asztalindex].vasarlo_neve != "":
+            print("=================================")
+            print(f"mit szeretnél csinálni({osszesasztal[mostani_asztalindex].neve})")
+            print("=================================")
+            print(f"vásárló neve: {osszesasztal[mostani_asztalindex].vasarlo_neve}")
+            while i < len(lehetosegek):
+                if i != a:
+                    print(f"   {lehetosegek[i]}")
+                else:
+                    print(f"\033[92m\033[1m > {lehetosegek[i]} < \033[0m")
+                i += 1
+            gomb = msvcrt.getch()
+            if gomb == b'w':
+                a -= 1
+            elif gomb == b's':
+                a += 1
+            if a < 0:
+                a = len(lehetosegek) - 1
+            elif a >= len(lehetosegek):
+                a = 0
+            if gomb == b'd':
+                asztalnal = False
+                megy = True
 
-        menutnez = False
-        if gomb == b'\r' and lehetosegek[a] == "menüt kérek":
-            asztalnal = False
-            menutnez = True
-            os.system("cls")
-            menu.menukiiras()
+            menutnez = False
+            if gomb == b'\r' and lehetosegek[a] == "menüt kérek":
+                asztalnal = False
+                menutnez = True
+                os.system("cls")
+                menu.menukiiras()
+                gomb = msvcrt.getch()
+                if gomb == b'd':
+                    os.system("cls")
+                    asztalnal = True
+        if osszesasztal[mostani_asztalindex].vasarlo_neve == "":
+            print("=================" )
+            print("Ez az asztal üres")
+            print("=================")
+
             gomb = msvcrt.getch()
             if gomb == b'd':
-                os.system("cls")
-                asztalnal = True
+                asztalnal = False
+                megy = True
                 
 
     a = 0
