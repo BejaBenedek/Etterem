@@ -1,7 +1,7 @@
 import menu
 import recept
 import raktar
-#import vasarlok
+import vasarlok
 import lezart_rendeles
 import os
 import msvcrt
@@ -16,6 +16,11 @@ class asztal:
     def __str__(self):
         return f"{self.neve} | {self.rendelesek_szama} db | {self.teljes_osszeg} Ft | vásárló: {self.vasarlo_neve}"
 
+class menupont:
+    def __init__(self, neve):
+        self.neve = neve
+    def __str__(self):
+        return f"{self.neve}"
 
 osszesasztal = []
 
@@ -33,7 +38,8 @@ while i < asztalok_szama:
     nev = "asztal " + str(i+1)
     osszesasztal.append(asztal(nev))
     i += 1
-osszesasztal.append("admin")
+osszesasztal.append(menupont("admin"))
+osszesasztal.append(menupont("új vásárló fogadása"))
 i = 0
 a = 0
 asztalnal = False
@@ -48,14 +54,10 @@ while kileptele == False:
         print("=====================================================")
         i = 0
         while i < len(osszesasztal):
-            if i != a and osszesasztal[i] != "admin":
+            if i != a:
                 print(f"   {osszesasztal[i].neve}")
-            if i == a and osszesasztal[i] != "admin":
+            if i == a:
                 print(f"\033[92m\033[1m > {osszesasztal[i].neve} < \033[0m")
-            if i == a and osszesasztal[i] == "admin":
-                print(f"\033[92m\033[1m > {osszesasztal[i]} < \033[0m")
-            if i != a and osszesasztal[i] == "admin":
-                print(f"   {osszesasztal[i]}")
             i += 1
 
         gomb = msvcrt.getch()
@@ -67,12 +69,12 @@ while kileptele == False:
             a = len(osszesasztal)-1
         elif a >= len(osszesasztal):
             a = 0
-        if gomb == b'\r' and osszesasztal[a] != "admin":
+        if gomb == b'\r' and osszesasztal[a].neve != "admin" and osszesasztal[a].neve != "új vásárló fogadása":
             os.system("cls")
             megy = False
             mostani_asztalindex = a  ########fontos
             asztalnal = True
-        if gomb == b'\r' and osszesasztal[a] == "admin":
+        if gomb == b'\r' and osszesasztal[a].neve == "admin":
             os.system("cls")
             megy = False
             admin = True
@@ -81,7 +83,12 @@ while kileptele == False:
             megy = False
             kileptele = True
             print("vége")
-
+        if gomb == b'\r' and osszesasztal[a].neve == "új vásárló fogadása":
+            os.system("cls")
+            megy = False
+            vasarlok.ujvasarlo()
+            megy = True
+            
     a = 0
     lehetosegek = ["rendelni", "fizetni", "megtudni a felszolgálómat", "menüt kérek"]
     while asztalnal == True:
@@ -90,7 +97,7 @@ while kileptele == False:
         print("=================================")
         print(f"mit szeretnél csinálni({osszesasztal[mostani_asztalindex].neve})")
         print("=================================")
-        print(f"vásárló neve: {osszesasztal[i].vasarlo_neve}")
+        print(f"vásárló neve: {osszesasztal[mostani_asztalindex].vasarlo_neve}")
         while i < len(lehetosegek):
             if i != a:
                 print(f"   {lehetosegek[i]}")
