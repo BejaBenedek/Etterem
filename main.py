@@ -57,8 +57,8 @@ while kileptele == False:
         elif gomb == b's':
             a += 1
         if a < 0:
-            a = len(osszesasztal) - 1
-        elif a >= len(osszesasztal):
+            a = len(osszesasztal)
+        elif a >= len(osszesasztal)+1:
             a = 0
         if gomb == b'\r':
             os.system("cls")
@@ -76,9 +76,9 @@ while kileptele == False:
     while asztalnal == True:
         os.system("cls")
         i = 0
-        print("======================")
-        print("mit szeretnél csinálni")
-        print("======================")
+        print("=================================")
+        print(f"mit szeretnél csinálni({osszesasztal[mostani_asztalindex].neve})")
+        print("=================================")
         while i < len(lehetosegek):
             if i != a:
                 print(f"   {lehetosegek[i]}")
