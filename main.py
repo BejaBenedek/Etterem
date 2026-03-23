@@ -42,9 +42,9 @@ admin = False
 while kileptele == False:
     while megy:
         os.system("cls")
-        print("================")
-        print("válassz asztalt")
-        print("================")
+        print("=====================================================")
+        print("válassz asztalt (w/s, d a kilépés, enter a választás)")
+        print("=====================================================")
         i = 0
         while i < len(osszesasztal):
             if i != a and osszesasztal[i] != "admin":
@@ -134,3 +134,9 @@ while kileptele == False:
         if gomb == b'd':
             admin = False
             megy = True
+        if gomb == b'\r' and lehetosegek[a] == "recept hozzáadása":
+            os.system("cls")
+            recept.hozzaadas()
+        if gomb == b'\r' and lehetosegek[a] == "recept törlése":
+            os.system("cls")
+            recept.torles()
