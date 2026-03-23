@@ -51,14 +51,10 @@ while megy:
     gomb = msvcrt.getch()
     if gomb == b'w':
         a -= 1
-        os.system("cls")
     elif gomb == b's':
         a += 1
-        os.system("cls")
     if a < 0:
         a = len(osszesasztal) - 1
-        os.system("cls")
     elif a >= len(osszesasztal):
         a = 0
-        os.system("cls")
     
