@@ -1,7 +1,7 @@
 import menu
 import recept
 import raktar
-import vasarlok
+#import vasarlok
 import lezart_rendeles
 import os
 import msvcrt
@@ -32,12 +32,13 @@ while i < asztalok_szama:
     nev = "asztal " + str(i+1)
     osszesasztal.append(asztal(nev))
     i += 1
-
+osszesasztal.append("admin")
 i = 0
 a = 0
 asztalnal = False
 megy = True
 kileptele = False
+admin = False
 while kileptele == False:
     while megy:
         os.system("cls")
@@ -46,25 +47,34 @@ while kileptele == False:
         print("================")
         i = 0
         while i < len(osszesasztal):
-            if i != a:
+            if i != a and osszesasztal[i] != "admin":
                 print(f"   {osszesasztal[i].neve}")
-            else:
+            if i == a and osszesasztal[i] != "admin":
                 print(f"\033[92m\033[1m > {osszesasztal[i].neve} < \033[0m")
+            if i == a and osszesasztal[i] == "admin":
+                print(f"\033[92m\033[1m > {osszesasztal[i]} < \033[0m")
+            if i != a and osszesasztal[i] == "admin":
+                print(f"   {osszesasztal[i]}")
             i += 1
+
         gomb = msvcrt.getch()
         if gomb == b'w':
             a -= 1
         elif gomb == b's':
             a += 1
         if a < 0:
-            a = len(osszesasztal)
-        elif a >= len(osszesasztal)+1:
+            a = len(osszesasztal)-1
+        elif a >= len(osszesasztal):
             a = 0
-        if gomb == b'\r':
+        if gomb == b'\r' and osszesasztal[a] != "admin":
             os.system("cls")
             megy = False
             mostani_asztalindex = a  ########fontos
             asztalnal = True
+        if gomb == b'\r' and osszesasztal[a] == "admin":
+            os.system("cls")
+            megy = False
+            admin = True
         if gomb == b'd':
             os.system("cls")
             megy = False
@@ -96,4 +106,31 @@ while kileptele == False:
             a = 0
         if gomb == b'd':
             asztalnal = False
+            megy = True
+
+    a = 0
+    lehetosegek = ["recept hozzáadása", "recept törlése", "raktár",]
+    while admin == True:
+        os.system("cls")
+        i = 0
+        print("=================================")
+        print("mit szeretnél csinálni(admin mód)")
+        print("=================================")
+        while i < len(lehetosegek):
+            if i != a:
+                print(f"   {lehetosegek[i]}")
+            else:
+                print(f"\033[92m\033[1m > {lehetosegek[i]} < \033[0m")
+            i += 1
+        gomb = msvcrt.getch()
+        if gomb == b'w':
+            a -= 1
+        elif gomb == b's':
+            a += 1
+        if a < 0:
+            a = len(lehetosegek) - 1
+        elif a >= len(lehetosegek):
+            a = 0
+        if gomb == b'd':
+            admin = False
             megy = True
