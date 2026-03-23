@@ -68,8 +68,26 @@ def rajtavane(rendeles):
     igen = False
 
     while i < len(menu):
-        if menu[i] == rendeles:
+        if menu[i][0] == rendeles:
             igen = True
         i += 1
     
     return igen
+
+def ar(rendeles):
+    menu = []
+
+    menufajl = open("menu.csv","r",encoding="utf-8")
+    for sor in menufajl:
+        bemenet = sor.strip().split(";")
+        menu.append(bemenet)
+    menufajl.close()
+    
+    i = 0
+
+    while i < len(menu):
+        if menu[i][0] == rendeles:
+            ar = int(menu[i][1])
+        i += 1
+    
+    return ar

@@ -111,7 +111,7 @@ while kileptele == False:
             
 
     a = 0
-    lehetosegek = ["rendelni", "fizetni", "megtudni a felszolgálómat", "menüt kérek"]
+    lehetosegek = ["rendelni", "fizetni", "megtudni a felszolgálómat", "menüt kérek", "mennyibe került az eddigi fogyasztásom?"]
     while asztalnal == True:
         os.system("cls")
         i = 0
@@ -138,6 +138,37 @@ while kileptele == False:
             if gomb == b'd':
                 asztalnal = False
                 megy = True
+            
+            rendeles_folyamatban = False
+            if gomb == b'\r' and lehetosegek[a] == "rendelni":
+                asztalnal = False
+                rendeles_folyamatban = True
+                while rendeles_folyamatban:
+                    os.system("cls")
+                    rendel_e = str(input("szeretne rendelni? "))
+                    if rendel_e == "igen":
+                        os.system("cls")
+                        rendeles = str(input("mit szeretne kérni? "))
+                        if menu.rajtavane(rendeles):
+                            osszesasztal[mostani_asztalindex].teljes_osszeg += menu.ar(rendeles) #######még folytatni kell
+                        else:
+                            print("ez nincs a menün")
+                    if rendel_e == "nem":
+                        rendeles_folyamatban = False
+                rendeles_folyamatban = False
+                asztalnal = True
+
+            fogyasztas = False
+            if gomb == b'\r' and lehetosegek[a] == "mennyibe került az eddigi fogyasztásom?":
+                os.system("cls")
+                fogyasztas = True
+                asztalnal = False
+                print(f"{osszesasztal[mostani_asztalindex].teljes_osszeg} FT")
+                gomb = msvcrt.getch()
+                if gomb == b'd':
+                    fogyasztas = False
+                    asztalnal = True
+                
 
             menutnez = False
             if gomb == b'\r' and lehetosegek[a] == "menüt kérek":
@@ -149,7 +180,7 @@ while kileptele == False:
                 if gomb == b'd':
                     os.system("cls")
                     asztalnal = True
-        if osszesasztal[mostani_asztalindex].vasarlo_neve == "":
+        else:
             print("=================" )
             print("Ez az asztal üres")
             print("=================")
