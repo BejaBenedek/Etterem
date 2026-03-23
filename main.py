@@ -96,7 +96,13 @@ while kileptele == False:
             if len(vasarlok_lista) < asztalok_szama:
                 vasarlok.ujvasarlo()
                 vasarlok_lista = vasarlok.osszes_vasarlo()
-                osszesasztal[len(vasarlok_lista)-1].vasarlo_neve = vasarlok_lista[-1]
+            uj_vasarlo = vasarlok_lista[-1]
+
+            for asztal_obj in osszesasztal:
+                if isinstance(asztal_obj, asztal) and asztal_obj.vasarlo_neve == "":
+                    asztal_obj.vasarlo_neve = uj_vasarlo
+                    break
+                
                 megy = True
             else:
                 print("sajnos megtelt az étterem")
