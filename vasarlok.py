@@ -15,7 +15,7 @@ def ujvasarlo():
     vasarlofajl.close()
 
     ideigvasarlo = []
-    nev = input("Milyen névre foglalt")
+    nev = input("Milyen névre foglalt? ")
     ideigvasarlo.append(nev)
     ideigvasarlo.append(random.choice(pincerek))
     vasarlok.append(ideigvasarlo)
@@ -34,7 +34,6 @@ def ujvasarlo():
 def osszes_vasarlo():
     vasarlok = []
     vasarlofajl = open("vasarlok.csv", "r", encoding="utf-8")
-
     for sor in vasarlofajl:
         adatok = sor.strip().split(";")
         nev = adatok[0]
@@ -43,7 +42,8 @@ def osszes_vasarlo():
             osszeg = int(adatok[2])
         else:
             osszeg = 0
-        vasarlok.append({"nev": nev, "pincér": pincer, "osszeg": osszeg})
+
+        vasarlok.append({"nev": nev, "pincer": pincer, "osszeg": osszeg})
 
     vasarlofajl.close()
     return vasarlok

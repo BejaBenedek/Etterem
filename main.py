@@ -43,7 +43,7 @@ while i < asztalok_szama:
     if i < len(vasarlok_lista):
         uj_asztal.vasarlo_neve = vasarlok_lista[i]["nev"]
         uj_asztal.teljes_osszeg = vasarlok_lista[i]["osszeg"]
-        uj_asztal.teljes_osszeg = vasarlok_lista[i]["pincer"]
+        uj_asztal.pincer = vasarlok_lista[i]["pincer"]
     osszesasztal.append(uj_asztal)
     i += 1
 
@@ -104,6 +104,7 @@ while kileptele == False:
             for asztal_obj in osszesasztal:
                 if isinstance(asztal_obj, asztal) and asztal_obj.vasarlo_neve == "":
                     asztal_obj.vasarlo_neve = uj_vasarlo["nev"]
+                    asztal_obj.pincer = uj_vasarlo["pincer"]
                     break
                 megy = True
             else:
