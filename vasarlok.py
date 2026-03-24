@@ -62,11 +62,31 @@ def rendeles_mentese(vasarlo_nev, rendeles, ar):
                 sor[2] = str(int(sor[2]) + ar)
             else:
                 sor.append(str(ar))
+
             sor.append(rendeles)
+
+            rendeles_lista = sor[3:]
+
+            darabok = {}
+            for item in rendeles_lista:
+                if item in darabok:
+                    darabok[item] += 1
+                else:
+                    darabok[item] = 1
+
+            uj_lista = []
+            for nev, db in darabok.items():
+                if db > 1:
+                    uj_lista.append(f"{db}x {nev}")
+                else:
+                    uj_lista.append(nev)
+
+            sor[:] = sor[:3] + uj_lista
 
     kiiras = open("vasarlok.csv", "w", encoding="utf-8")
     for sor in vasarlok:
         kiiras.write(";".join(sor) + "\n")
+    kiiras.close()
 
 def mai_profit():
     vasarlok = []
