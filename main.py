@@ -154,10 +154,21 @@ while kileptele == False:
                         os.system("cls")
                         rendeles = str(input("mit szeretne kérni? ").lower())
                         if menu.rajtavane(rendeles):
-                            vasarlok.rendeles_mentese(osszesasztal[mostani_asztalindex].vasarlo_neve,rendeles,menu.ar(rendeles))
-                            raktar.kivonas(rendeles)
+                            if raktar.kivonas(rendeles) != "nincs elég hozzávaló a raktárban":
+                                vasarlok.rendeles_mentese(osszesasztal[mostani_asztalindex].vasarlo_neve,rendeles,menu.ar(rendeles))
+                                raktar.kivonas(rendeles)
+                            else:
+                                rendeles_folyamatban = False
+                                print(raktar.kivonas(rendeles))
+                                gomb = msvcrt.getch()
+                                if gomb == b'd':
+                                    rendeles_folyamatban = True
                         else:
+                            rendeles_folyamatban = False
                             print("ez nincs a menün")
+                            gomb = msvcrt.getch()
+                            if gomb == b'd':
+                                rendeles_folyamatban = True
                     if rendel_e == "nem":
                         rendeles_folyamatban = False
                 rendeles_folyamatban = False
