@@ -149,7 +149,7 @@ while kileptele == False:
                 rendeles_folyamatban = True
                 while rendeles_folyamatban:
                     os.system("cls")
-                    rendel_e = str(input("szeretne rendelni? "))
+                    rendel_e = str(input("szeretne rendelni? ").lower())
                     if rendel_e == "igen":
                         os.system("cls")
                         rendeles = str(input("mit szeretne kérni? "))
