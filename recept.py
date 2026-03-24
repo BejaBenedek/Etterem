@@ -70,9 +70,9 @@ def hozzaadas():
 def hozzavalok(rendeles):
     recepteklista = []
 
-    with open("recept.csv", "r", encoding="utf-8") as receptfajl:
-        for sor in receptfajl:
-            recepteklista.append(sor.strip().split(";"))
+    receptfajl = open("recept.csv", "r", encoding="utf-8")
+    for sor in receptfajl:
+        recepteklista.append(sor.strip().split(";"))
 
     hozzavalok_lista = []
     i = 0
@@ -86,3 +86,48 @@ def hozzavalok(rendeles):
         i += 1
 
     return hozzavalok_lista
+
+def recept_kiirasa(recept):
+    recepteklista = []
+
+    receptfajl = open("recept.csv", "r", encoding="utf-8")
+    for sor in receptfajl:
+        recepteklista.append(sor.strip().split(";"))
+    receptfajl.close()
+
+    kiiras = f"Recept: {recept}\n"
+    kiiras += "Hozzávalók:\n"
+
+    for sor in recepteklista:
+        if sor[0] == recept:
+            hozzavalo = sor[1]
+            mennyiseg = sor[2]
+            kiiras += f"- {hozzavalo}: {mennyiseg}\n"
+
+    return kiiras
+
+
+def osszes_recept_kiirasa():
+    receptek = []
+
+    f = open("recept.csv", "r", encoding="utf-8")
+    for sor in f:
+        receptek.append(sor.strip().split(";"))
+    f.close()
+
+    kiiras = ""
+    aktualis_recept = ""
+
+    for sor in receptek:
+        if len(sor) >= 3:
+            recept_nev = sor[0]
+            hozzavalo = sor[1]
+            mennyiseg = sor[2]
+
+            if recept_nev != aktualis_recept:
+                aktualis_recept = recept_nev
+                kiiras += f"\nRecept: {recept_nev}\nHozzávalók:\n"
+
+            kiiras += f"- {hozzavalo}: {mennyiseg}\n"
+
+    return kiiras

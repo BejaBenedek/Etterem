@@ -244,7 +244,7 @@ while kileptele == False:
                 
 
     a = 0
-    lehetosegek = ["recept hozzáadása", "recept törlése", "raktár", "mennyi pént kerestünk ma?", "hozzávalók rendelése"]
+    lehetosegek = ["recept hozzáadása", "recept törlése", "raktár", "mennyi pént kerestünk ma?", "hozzávalók rendelése", "bizonyos recept kiírása", "összes recept kiírása"]
     while admin == True:
         os.system("cls")
         i = 0
@@ -275,6 +275,23 @@ while kileptele == False:
         if gomb == b'\r' and lehetosegek[a] == "recept törlése":
             os.system("cls")
             recept.torles()
+        if gomb == b'\r' and lehetosegek[a] == "bizonyos recept kiírása":
+            os.system("cls")
+            admin = False
+            print(recept.recept_kiirasa(str(input("adj meg egy receptet: "))))
+            gomb = msvcrt.getch()
+            if gomb == b'd':
+                os.system("cls")
+                admin = True
+            
+        if gomb == b'\r' and lehetosegek[a] == "összes recept kiírása":
+            os.system("cls")
+            admin = False
+            print(recept.osszes_recept_kiirasa())
+            gomb = msvcrt.getch()
+            if gomb == b'd':
+                os.system("cls")
+                admin = True
         
         if gomb == b'\r' and lehetosegek[a] == "mennyi pént kerestünk ma?":
             os.system("cls")
