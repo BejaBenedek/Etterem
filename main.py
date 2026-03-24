@@ -98,7 +98,7 @@ while kileptele == False:
             os.system("cls")
             megy = False
             kileptele = True
-            print("vége")
+            print("Bezártad a menüt")
         if gomb == b'\r' and osszesasztal[a].neve == "új vásárló fogadása":
             os.system("cls")
             megy = False
@@ -278,12 +278,20 @@ while kileptele == False:
         if gomb == b'\r' and lehetosegek[a] == "bizonyos recept kiírása":
             os.system("cls")
             admin = False
-            print(recept.recept_kiirasa(str(input("adj meg egy receptet: "))))
-            gomb = msvcrt.getch()
-            if gomb == b'd':
-                os.system("cls")
-                admin = True
-            
+            receptki = str(input("adj meg egy receptet: ").lower())
+            if menu.rajtavane(receptki):
+                print(recept.recept_kiirasa(receptki))
+                gomb = msvcrt.getch()
+                if gomb == b'd':
+                    os.system("cls")
+                    admin = True
+            else:
+                print("nincs ilyen recept")
+                gomb = msvcrt.getch()
+                if gomb == b'd':
+                    os.system("cls")
+                    admin = True
+
         if gomb == b'\r' and lehetosegek[a] == "összes recept kiírása":
             os.system("cls")
             admin = False
