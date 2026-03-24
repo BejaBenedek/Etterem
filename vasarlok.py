@@ -67,3 +67,19 @@ def rendeles_mentese(vasarlo_nev, rendeles, ar):
     kiiras = open("vasarlok.csv", "w", encoding="utf-8")
     for sor in vasarlok:
         kiiras.write(";".join(sor) + "\n")
+
+def mai_profit():
+    vasarlok = []
+
+    vasarlofajl = open("vasarlok.csv", "r", encoding="utf-8")
+    for sor in vasarlofajl:
+        vasarlok.append(sor.strip().split(";"))
+    vasarlofajl.close()
+
+    osszeg = 0
+
+    for sor in vasarlok:
+        if len(sor) > 2:
+            osszeg += int(sor[2])
+
+    return f"{osszeg} FT"
