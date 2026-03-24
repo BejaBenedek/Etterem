@@ -9,13 +9,11 @@ for sor in raktarfajl:
 raktarfajl.close()
 
 def alapra_allitas(lista):
-    raktar = []
-
-    raktarfajl = open("raktar.csv","r",encoding="utf-8")
-    for sor in raktarfajl:
-        bemenet = sor.strip().split(";")
-        raktar.append(bemenet)
-    raktarfajl.close()
+    kiiras = open("raktar.csv", "w", encoding="utf-8")
+    i = 0
+    while i < len(lista):
+        kiiras.write(f"{lista[i][0]};{lista[i][1]}\n")
+        i += 1
 
 def kivonas(rendeles):
     raktar = []
