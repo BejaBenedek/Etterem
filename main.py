@@ -186,7 +186,7 @@ while kileptele == False:
                     if v["nev"] == aktualis_nev:
                         osszesasztal[mostani_asztalindex].teljes_osszeg = v["osszeg"]
                         break
-                print(f"{osszesasztal[mostani_asztalindex].teljes_osszeg} FT")
+                print(f"Az eddigi fogyasztása: {osszesasztal[mostani_asztalindex].teljes_osszeg} FT")
                 
                 gomb = msvcrt.getch()
                 if gomb == b'd':
@@ -198,7 +198,7 @@ while kileptele == False:
                 os.system("cls")
                 asztalnal=False
                 pincertker = True
-                print(f"{osszesasztal[mostani_asztalindex].pincer}")
+                print(f"A pincére: {osszesasztal[mostani_asztalindex].pincer}")
 
                 gomb = msvcrt.getch()
                 if gomb == b'd':
