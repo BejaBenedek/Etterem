@@ -290,3 +290,12 @@ while kileptele == False:
             if gomb == b'd':
                 os.system("cls")
                 admin = True
+
+        if gomb == b'\r' and lehetosegek[a] == "raktár":
+            os.system("cls")
+            admin = False
+            raktar.raktarkiiras()
+            gomb = msvcrt.getch()
+            if gomb == b'd':
+                os.system("cls")
+                admin = True

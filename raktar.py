@@ -55,3 +55,17 @@ def kivonas(rendeles):
                 kiiras.write(f"{raktar[i][0]};{raktar[i][1]}\n")
                 i += 1
             kiiras.close()
+
+
+def raktarkiiras():
+    raktar = []
+
+    raktarfajl = open("raktar.csv", "r", encoding="utf-8")
+    for sor in raktarfajl:
+        raktar.append(sor.strip().split(";"))
+    raktarfajl.close()
+
+    i = 0
+    while i < len(raktar):
+        print(f"{raktar[i][0]} | mennyiség: {raktar[i][1]}")
+        i += 1
