@@ -38,9 +38,12 @@ def osszes_vasarlo():
     for sor in vasarlofajl:
         adatok = sor.strip().split(";")
         nev = adatok[0]
-        pincér = adatok[1]
-        osszeg = int(adatok[2])
-        vasarlok.append({"nev": nev,"pincer": pincér,"osszeg": osszeg})
+        pincer = adatok[1]
+        if len(adatok) > 2:
+            osszeg = int(adatok[2])
+        else:
+            osszeg = 0
+        vasarlok.append({"nev": nev, "pincér": pincer, "osszeg": osszeg})
 
     vasarlofajl.close()
     return vasarlok

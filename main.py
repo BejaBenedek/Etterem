@@ -101,7 +101,7 @@ while kileptele == False:
 
             for asztal_obj in osszesasztal:
                 if isinstance(asztal_obj, asztal) and asztal_obj.vasarlo_neve == "":
-                    asztal_obj.vasarlo_neve = uj_vasarlo
+                    asztal_obj.vasarlo_neve = uj_vasarlo["nev"]
                     break
                 megy = True
             else:
@@ -172,6 +172,7 @@ while kileptele == False:
                         osszesasztal[mostani_asztalindex].teljes_osszeg = v["osszeg"]
                         break
                 print(f"{osszesasztal[mostani_asztalindex].teljes_osszeg} FT")
+                
                 gomb = msvcrt.getch()
                 if gomb == b'd':
                     fogyasztas = False
