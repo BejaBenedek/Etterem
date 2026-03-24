@@ -34,8 +34,14 @@ def ujvasarlo():
 def osszes_vasarlo():
     vasarlok = []
     vasarlofajl = open("vasarlok.csv", "r", encoding="utf-8")
+
     for sor in vasarlofajl:
-        vasarlok.append(sor.strip().split(";")[0])
+        adatok = sor.strip().split(";")
+        nev = adatok[0]
+        pincér = adatok[1]
+        osszeg = int(adatok[2])
+        vasarlok.append({"nev": nev,"pincer": pincér,"osszeg": osszeg})
+
     vasarlofajl.close()
     return vasarlok
 

@@ -40,7 +40,8 @@ while i < asztalok_szama:
     nev = "asztal " + str(i+1)
     uj_asztal = asztal(nev)
     if i < len(vasarlok_lista):
-        uj_asztal.vasarlo_neve = vasarlok_lista[i]
+        uj_asztal.vasarlo_neve = vasarlok_lista[i]["nev"]
+        uj_asztal.teljes_osszeg = vasarlok_lista[i]["osszeg"]
     osszesasztal.append(uj_asztal)
     i += 1
 
@@ -163,6 +164,13 @@ while kileptele == False:
                 os.system("cls")
                 fogyasztas = True
                 asztalnal = False
+
+                vasarlok_lista = vasarlok.osszes_vasarlo()
+                aktualis_nev = osszesasztal[mostani_asztalindex].vasarlo_neve
+                for v in vasarlok_lista:
+                    if v["nev"] == aktualis_nev:
+                        osszesasztal[mostani_asztalindex].teljes_osszeg = v["osszeg"]
+                        break
                 print(f"{osszesasztal[mostani_asztalindex].teljes_osszeg} FT")
                 gomb = msvcrt.getch()
                 if gomb == b'd':
