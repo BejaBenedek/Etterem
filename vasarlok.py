@@ -32,9 +32,29 @@ def ujvasarlo():
         i += 1
 
 def osszes_vasarlo():
-    lista = []
-    fajl = open("vasarlok.csv", "r", encoding="utf-8")
-    for sor in fajl:
-        lista.append(sor.strip().split(";")[0])
-    fajl.close()
-    return lista
+    vasarlok = []
+    vasarlofajl = open("vasarlok.csv", "r", encoding="utf-8")
+    for sor in vasarlofajl:
+        vasarlok.append(sor.strip().split(";")[0])
+    vasarlofajl.close()
+    return vasarlok
+
+def rendeles_mentese(vasarlo_nev, rendeles, ar):
+    vasarlok = []
+
+    vasarlofajl = open("vasarlok.csv", "r", encoding="utf-8")
+    for sor in vasarlofajl:
+        vasarlok.append(sor.strip().split(";"))
+    vasarlofajl.close()
+
+    for sor in vasarlok:
+        if sor[0] == vasarlo_nev:
+            if len(sor) > 2:
+                sor[2] = str(int(sor[2]) + ar)
+            else:
+                sor.append(str(ar))
+            sor.append(rendeles)
+
+    kiiras = open("vasarlok.csv", "w", encoding="utf-8")
+    for sor in vasarlok:
+        kiiras.write(";".join(sor) + "\n")

@@ -150,7 +150,7 @@ while kileptele == False:
                         os.system("cls")
                         rendeles = str(input("mit szeretne kérni? "))
                         if menu.rajtavane(rendeles):
-                            osszesasztal[mostani_asztalindex].teljes_osszeg += menu.ar(rendeles) #######még folytatni kell
+                            vasarlok.rendeles_mentese(osszesasztal[mostani_asztalindex].vasarlo_neve,rendeles,menu.ar(rendeles))
                         else:
                             print("ez nincs a menün")
                     if rendel_e == "nem":
