@@ -13,6 +13,11 @@ class asztal:
         self.teljes_osszeg = 0
         self.vasarlo_neve = ""
         self.pincer = ""
+    
+    def uresit(self):
+        self.vasarlo_neve = ""
+        self.teljes_osszeg = 0
+        self.pincer = ""
 
     def __str__(self):
         return f"{self.neve} | {self.rendelesek_szama} db | {self.teljes_osszeg} Ft | vásárló: {self.vasarlo_neve} | pincér: {self.pincer}"
@@ -22,6 +27,7 @@ class menupont:
         self.neve = neve
     def __str__(self):
         return f"{self.neve}"
+
 
 osszesasztal = []
 
@@ -106,12 +112,13 @@ while kileptele == False:
                     asztal_obj.vasarlo_neve = uj_vasarlo["nev"]
                     asztal_obj.pincer = uj_vasarlo["pincer"]
                     break
-                megy = True
             else:
                 print("sajnos megtelt az étterem")
                 gomb = msvcrt.getch()
                 if gomb == b'd':
                     megy = True
+            
+            megy = True
             
 
     a = 0
@@ -208,10 +215,10 @@ while kileptele == False:
                 mai_profit += osszeg
 
                 print(f"Fizetett: {osszeg} Ft")
-
+                osszesasztal[mostani_asztalindex].uresit()
                 gomb = msvcrt.getch()
                 if gomb == b'd':
-                    asztalnal = True
+                    megy = True
 
             if gomb == b'\r' and lehetosegek[a] == "menüt kérek":
                 asztalnal = False
