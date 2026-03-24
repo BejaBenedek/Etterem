@@ -1,7 +1,14 @@
 import menu
 import recept
 
-def alap():
+raktar = []
+raktarfajl = open("raktar.csv","r",encoding="utf-8")
+for sor in raktarfajl:
+    bemenet = sor.strip().split(";")
+    raktar.append(bemenet)
+raktarfajl.close()
+
+def alapra_allitas(lista):
     raktar = []
 
     raktarfajl = open("raktar.csv","r",encoding="utf-8")
