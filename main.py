@@ -35,7 +35,7 @@ if tobbasztal == "igen":
 print(asztalok_szama, "asztal van")
 
 vasarlok_lista = vasarlok.osszes_vasarlo()
-
+mai_profit = 0
 i = 0
 while i < asztalok_szama:
     nev = "asztal " + str(i+1)
@@ -174,10 +174,8 @@ while kileptele == False:
                 rendeles_folyamatban = False
                 asztalnal = True
 
-            fogyasztas = False
             if gomb == b'\r' and lehetosegek[a] == "mennyibe került az eddigi fogyasztásom?":
                 os.system("cls")
-                fogyasztas = True
                 asztalnal = False
 
                 vasarlok_lista = vasarlok.osszes_vasarlo()
@@ -190,25 +188,33 @@ while kileptele == False:
                 
                 gomb = msvcrt.getch()
                 if gomb == b'd':
-                    fogyasztas = False
                     asztalnal = True
 
-            pincertker = False
             if gomb == b'\r' and lehetosegek[a] == "megtudni a felszolgálómat":
                 os.system("cls")
                 asztalnal=False
-                pincertker = True
                 print(f"A pincére: {osszesasztal[mostani_asztalindex].pincer}")
 
                 gomb = msvcrt.getch()
                 if gomb == b'd':
-                    pincertker = False
+                    asztalnal = True
+            
+            
+            if gomb == b'\r' and lehetosegek[a] == "fizetni":
+                os.system("cls")
+                asztalnal = False
+
+                osszeg = lezart_rendeles.fizetes(osszesasztal[mostani_asztalindex].vasarlo_neve)
+                mai_profit += osszeg
+
+                print(f"Fizetett: {osszeg} Ft")
+
+                gomb = msvcrt.getch()
+                if gomb == b'd':
                     asztalnal = True
 
-            menutnez = False
             if gomb == b'\r' and lehetosegek[a] == "menüt kérek":
                 asztalnal = False
-                menutnez = True
                 os.system("cls")
                 menu.menukiiras()
                 gomb = msvcrt.getch()
@@ -262,7 +268,7 @@ while kileptele == False:
         if gomb == b'\r' and lehetosegek[a] == "mennyi pént kerestünk ma?":
             os.system("cls")
             admin = False
-            print(vasarlok.mai_profit())
+            print(f"A mai profitunk: {mai_profit} FT")
             gomb = msvcrt.getch()
             if gomb == b'd':
                 os.system("cls")
