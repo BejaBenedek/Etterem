@@ -1,6 +1,36 @@
-raktar = []
+import menu
+import recept
 
-raktarfajl = open("raktar.csv","r",encoding="utf-8")
-for sor in raktarfajl:
-    bemenet = sor.strip().split(";")
-    raktar.append(bemenet)
+def alap():
+    raktar = []
+
+    raktarfajl = open("raktar.csv","r",encoding="utf-8")
+    for sor in raktarfajl:
+        bemenet = sor.strip().split(";")
+        raktar.append(bemenet)
+    raktarfajl.close()
+
+def kivonas(rendeles):
+    raktar = []
+    hozzavalok = recept.hozzavalok(rendeles)
+
+    raktarfajl = open("raktar.csv", "r", encoding="utf-8")
+    for sor in raktarfajl:
+        raktar.append(sor.strip().split(";"))
+    raktarfajl.close()
+
+    if menu.rajtavane(rendeles):
+        i = 0
+        while i < len(hozzavalok):
+            z = 0
+            while z < len(raktar):
+                if hozzavalok[i][0] == raktar[z][0]:
+                    raktar[z][1] = int(raktar[z][1]) - int(hozzavalok[i][1])
+                z += 1
+            i += 1
+
+    kiiras = open("raktar.csv", "w", encoding="utf-8")
+    i = 0
+    while i < len(raktar):
+        kiiras.write(f"{raktar[i][0]};{raktar[i][1]}\n")
+        i += 1

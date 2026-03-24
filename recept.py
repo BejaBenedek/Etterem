@@ -65,3 +65,24 @@ def hozzaadas():
         receptkiiras.write(f"{recepteklista[i][0]};{recepteklista[i][1]};{recepteklista[i][2]}\n")
         i += 1
     receptkiiras.close()
+
+
+def hozzavalok(rendeles):
+    recepteklista = []
+
+    with open("recept.csv", "r", encoding="utf-8") as receptfajl:
+        for sor in receptfajl:
+            recepteklista.append(sor.strip().split(";"))
+
+    hozzavalok_lista = []
+    i = 0
+    
+    while i < len(recepteklista):
+        if recepteklista[i][0] == rendeles:
+            ideiglenes = []
+            ideiglenes.append(recepteklista[i][1])
+            ideiglenes.append(recepteklista[i][2])
+            hozzavalok_lista.append(ideiglenes)
+        i += 1
+
+    return hozzavalok_lista
