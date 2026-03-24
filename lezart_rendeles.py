@@ -23,3 +23,25 @@ def fizetes(vasarlo_neve):
     kiiras.close()
 
     return fizetendo
+
+def kiiras():
+    fajl = open("lezart_rendeles.csv", "r", encoding="utf-8")
+
+    for sor in fajl:
+        adatok = sor.strip().split(";")
+        nev = adatok[0]
+        pincer = adatok[1]
+        osszeg = adatok[2]
+        rendelesek = adatok[3:]
+
+        print(f"Vásárló: {nev}")
+        print(f"Pincér: {pincer}")
+        print(f"Fizetett: {osszeg} Ft")
+        print("Rendelések:")
+
+        for r in rendelesek:
+            print(f" - {r}")
+
+        print("--------------------------")
+
+    fajl.close()
