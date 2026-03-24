@@ -12,9 +12,10 @@ class asztal:
         self.rendelesek_szama = 0
         self.teljes_osszeg = 0
         self.vasarlo_neve = ""
+        self.pincer = ""
 
     def __str__(self):
-        return f"{self.neve} | {self.rendelesek_szama} db | {self.teljes_osszeg} Ft | vásárló: {self.vasarlo_neve}"
+        return f"{self.neve} | {self.rendelesek_szama} db | {self.teljes_osszeg} Ft | vásárló: {self.vasarlo_neve} | pincér: {self.pincer}"
 
 class menupont:
     def __init__(self, neve):
@@ -42,6 +43,7 @@ while i < asztalok_szama:
     if i < len(vasarlok_lista):
         uj_asztal.vasarlo_neve = vasarlok_lista[i]["nev"]
         uj_asztal.teljes_osszeg = vasarlok_lista[i]["osszeg"]
+        uj_asztal.teljes_osszeg = vasarlok_lista[i]["pincer"]
     osszesasztal.append(uj_asztal)
     i += 1
 
@@ -177,7 +179,18 @@ while kileptele == False:
                 if gomb == b'd':
                     fogyasztas = False
                     asztalnal = True
-                
+
+            pincertker = False
+            if gomb == b'\r' and lehetosegek[a] == "megtudni a felszolgálómat":
+                os.system("cls")
+                asztalnal=False
+                pincertker = True
+                print(f"{osszesasztal[mostani_asztalindex].pincer}")
+
+                gomb = msvcrt.getch()
+                if gomb == b'd':
+                    pincertker = False
+                    asztalnal = True
 
             menutnez = False
             if gomb == b'\r' and lehetosegek[a] == "menüt kérek":
