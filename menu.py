@@ -32,7 +32,7 @@ def menutorles(nev):
     menufajl.close()
 
     i = 0
-    while i < len(menu):
+    while i < len(menu): #kiválogatás
         if menu[i][0] != nev:
             ujmenu.append(menu[i])
         i += 1

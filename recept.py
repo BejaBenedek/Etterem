@@ -16,7 +16,7 @@ def torles():
     menu.menutorles(ker)
     i = 0
 
-    while i < len(recepteklista):
+    while i < len(recepteklista): #kiválogatás
         if recepteklista[i][0] != ker:
             ujreceptek.append(recepteklista[i])
         i += 1
