@@ -2,6 +2,7 @@ import os
 import menu
 
 def torles():
+    """kitöröl a receptek közül és a menüről egy bekért ételt"""
     ujreceptek = []
     
     recepteklista = []
@@ -28,6 +29,7 @@ def torles():
     receptkiiras.close()
 
 def hozzaadas():
+    """hozzáad egy tetszőleges receptet a recptek közé és a menühöz"""
     recepteklista = []
 
     receptfajl = open("recept.csv","r", encoding="utf-8")
@@ -68,6 +70,7 @@ def hozzaadas():
 
 
 def hozzavalok(rendeles):
+    """visszadaja az összes recept hozzávalóját"""
     recepteklista = []
 
     receptfajl = open("recept.csv", "r", encoding="utf-8")
@@ -88,6 +91,7 @@ def hozzavalok(rendeles):
     return hozzavalok_lista
 
 def recept_kiirasa(recept):
+    """kiírj egy tetszőleges receptet"""
     recepteklista = []
 
     receptfajl = open("recept.csv", "r", encoding="utf-8")
@@ -108,6 +112,7 @@ def recept_kiirasa(recept):
 
 
 def osszes_recept_kiirasa():
+    """kiírja az összes receptet"""
     receptek = []
 
     f = open("recept.csv", "r", encoding="utf-8")

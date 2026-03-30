@@ -9,6 +9,7 @@ for sor in raktarfajl:
 raktarfajl.close()
 
 def alapra_allitas(lista):
+    """visszaállítja a raktar.csv fájlt az alap beéállítására"""
     kiiras = open("raktar.csv", "w", encoding="utf-8")
     i = 0
     while i < len(lista):
@@ -16,6 +17,7 @@ def alapra_allitas(lista):
         i += 1
 
 def kivonas(rendeles):
+    """egy rendeléskor kivonja a raktárból egy recept hozzávalóit"""
     raktar = []
     hozzavalok = recept.hozzavalok(rendeles)
 
@@ -58,6 +60,7 @@ def kivonas(rendeles):
 
 
 def raktarkiiras():
+    """kiírja a raktár tartalmát"""
     raktar = []
 
     raktarfajl = open("raktar.csv", "r", encoding="utf-8")

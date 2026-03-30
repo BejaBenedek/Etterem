@@ -1,6 +1,7 @@
 import random
 
 def ujvasarlo():
+    """ezzel az eljárással lehet új vásárlót fogadni"""
     vasarlok = []
     pincerek = []
     alapvasarlok = []
@@ -32,6 +33,7 @@ def ujvasarlo():
         i += 1
 
 def osszes_vasarlo():
+    """ez a függvény beolvassa és visszaadja az összes vásárlót"""
     vasarlok = []
     vasarlofajl = open("vasarlok.csv", "r", encoding="utf-8")
     for sor in vasarlofajl:
@@ -49,6 +51,7 @@ def osszes_vasarlo():
     return vasarlok
 
 def rendeles_mentese(vasarlo_nev, rendeles, ar):
+    """ez az eljárás elmenti a vasarlok.csv fájlba a vásárló új rendelését"""
     vasarlok = []
 
     vasarlofajl = open("vasarlok.csv", "r", encoding="utf-8")
@@ -89,6 +92,7 @@ def rendeles_mentese(vasarlo_nev, rendeles, ar):
     kiiras.close()
 
 def mai_profit():
+    """ez a függvény kiírja hogy mennyi pénzt keresett ma az étterem"""
     vasarlok = []
 
     vasarlofajl = open("vasarlok.csv", "r", encoding="utf-8")

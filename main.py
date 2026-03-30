@@ -8,6 +8,7 @@ import msvcrt
 
 class asztal:
     def __init__(self, neve):
+        """ez a függvény az asztalt készíti el"""
         self.neve = neve
         self.rendelesek_szama = 0
         self.teljes_osszeg = 0
@@ -15,6 +16,7 @@ class asztal:
         self.pincer = ""
     
     def uresit(self):
+        """ez a függvény kiürít egy asztalt"""
         self.vasarlo_neve = ""
         self.teljes_osszeg = 0
         self.pincer = ""
@@ -24,6 +26,7 @@ class asztal:
 
 class menupont:
     def __init__(self, neve):
+        """ez a függvény elkészíti a menüpontot"""
         self.neve = neve
     def __str__(self):
         return f"{self.neve}"

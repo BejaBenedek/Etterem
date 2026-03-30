@@ -1,4 +1,5 @@
 def fizetes(vasarlo_neve):
+    """fizetéskor visszaadja, hogy az adott vásárló mennyivel tartozik és átteszi a vásárló rendeléseit a lezárt rendelésekhez"""
     vasarlok = []
 
     with open("vasarlok.csv", "r", encoding="utf-8") as vasarlofajl:
@@ -25,6 +26,7 @@ def fizetes(vasarlo_neve):
     return fizetendo
 
 def kiiras():
+    """kiírja a lezárt endeléseket"""
     fajl = open("lezart_rendeles.csv", "r", encoding="utf-8")
 
     for sor in fajl:

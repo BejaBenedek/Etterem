@@ -1,4 +1,5 @@
 def arazas(elelmiszer):
+    """új termék hozzáadásakor ezzel árazuk a terméket, a paraméter az étel neve"""
     menu = []
 
     menufajl = open("menu.csv","r",encoding="utf-8")
@@ -20,6 +21,7 @@ def arazas(elelmiszer):
         i += 1
 
 def menutorles(nev):
+    """az admin módban egy recept törlésénél ezt használjuk, hogy a menüről is levegye az ételt, a paraméter az eltávolítandó étel"""
     menu = []
     ujmenu = []
 
@@ -42,6 +44,7 @@ def menutorles(nev):
         i += 1
 
 def menukiiras():
+    """amikor egy asztalnál kérik a menüt, ezzel írjuk ki"""
     menu = []
 
     menufajl = open("menu.csv","r",encoding="utf-8")
@@ -56,6 +59,7 @@ def menukiiras():
         i += 1
 
 def rajtavane(rendeles):
+    """ez a függvény megnézi, hogy a paraméterben lévő rendelés rajtavan-e a menün"""
     menu = []
 
     menufajl = open("menu.csv","r",encoding="utf-8")
@@ -65,7 +69,7 @@ def rajtavane(rendeles):
     menufajl.close()
 
     i = 0
-    igen = False
+    igen = False #eldöntés
 
     while i < len(menu):
         if menu[i][0] == rendeles:
@@ -75,6 +79,7 @@ def rajtavane(rendeles):
     return igen
 
 def ar(rendeles):
+    """visszaadja a paraméterben való rendelés árát"""
     menu = []
 
     menufajl = open("menu.csv","r",encoding="utf-8")
@@ -86,7 +91,7 @@ def ar(rendeles):
     i = 0
 
     while i < len(menu):
-        if menu[i][0] == rendeles:
+        if menu[i][0] == rendeles: #kiválasztás
             ar = int(menu[i][1])
         i += 1
     
