@@ -129,7 +129,7 @@ def osszes_recept_kiirasa():
             hozzavalo = sor[1]
             mennyiseg = sor[2]
 
-            if recept_nev != aktualis_recept:
+            if recept_nev != aktualis_recept: #kiválogatás
                 aktualis_recept = recept_nev
                 kiiras += f"\nRecept: {recept_nev}\nHozzávalók:\n"
 

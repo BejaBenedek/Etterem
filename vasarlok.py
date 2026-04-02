@@ -6,7 +6,7 @@ def ujvasarlo():
     pincerek = []
     alapvasarlok = []
     vasarlofajl = open("vasarlok.csv","r",encoding="utf-8")
-    for sor in vasarlofajl:
+    for sor in vasarlofajl: #szétválogatás
         bemenet = sor.strip().split(";")
         if len(bemenet) > 2:
             alapvasarlok.append(bemenet)
